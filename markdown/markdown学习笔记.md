@@ -9,7 +9,8 @@
 	顶部连接[toc]
 ###图片
 ![图片2](../_img/QQ截图20151209141011.png "本地图片")
-语法
+
+ 语法
 
 	![Alt text](/path/to/img.jpg "Optional title")
 
