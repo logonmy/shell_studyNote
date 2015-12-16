@@ -1,0 +1,95 @@
+[TOC]
+
+#centos6.5 安装oracle 11g r2
+
+##安装环境
+
+- Linux服务器：CentOS6.4-64位
+- oracle服务器：oracle11g-64位
+
+##基本要求
+
+- 内存大小：至少2G
+- 硬盘大小：至少6G
+- 交换空间：一般为内存的2倍，例如：2G的内存可以设置swap 分区为4G大小
+
+##安装依赖
+
+	yum install binutils compat-libstdc++-33 compat-libstdc++-33.i686 elfutils-libelf elfutils-libelf-devel gcc gcc-c++ glibc glibc.i686 glibc-common glibc-devel glibc-devel.i686 glibc-headers ksh libaio libaio.i686 libaio-devel libaio-devel.i686 libgcc libgcc.i686 libstdc++ libstdc++.i686 libstdc++-devel make sysstat unixODBC unixODBC-devel -y 
+
+##配置oracle用户
+	groupadd  oinstall;
+	groupadd  dba;
+	useradd -g oinstall -g dba -m oracle;
+	passwd  oracle;
+	mkdir /home/oracle/app;
+	mkdir /home/oracle/app/oracle;
+	mkdir /home/oracle/app/oradata;
+	mkdir /home/oracle/app/oracle/product;
+	chown -R oracle:oinstall /home/oracle/app;
+
+    vi  /etc/profile
+    if [ $USER = "oracle" ]; then 
+     if [ $SHELL = "/bin/ksh" ]; then 
+      ulimit -p 16384 
+      ulimit -n 65536 
+     else 
+      ulimit -u 16384 -n 65536 
+     fi
+    fi	
+
+	su oracle;
+	vi ~/.bash_profile;
+	umask 022
+    export ORACLE_BASE=/home/oracle/app/oracle
+    export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1
+    export ORACLE_SID=orcl
+    export PATH=$PATH:$HOME/bin:$ORACLE_HOME/bin
+    export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib
+
+
+
+##修改linux配置
+vi  /etc/security/limits.conf
+
+	oracle   soft    nproc    2047
+	oracle   hard    nproc    16384
+	oracle   soft    nofile     1024
+	oracle   hard    nofile    65536
+
+vi  /etc/pam.d/login
+
+	session   required    /lib/security/pam_limits.so
+	session   required    pam_limits.so
+
+vi  /etc/sysctl.conf
+
+	fs.file-max = 6815744 
+	fs.aio-max-nr = 1048576 
+	kernel.shmall = 2097152 
+	kernel.shmmax = 2147483648 
+	kernel.shmmni = 4096 
+	kernel.sem = 250 32000 100 128 
+	net.ipv4.ip_local_port_range = 9000 65500 
+	net.core.rmem_default = 4194304 
+	net.core.rmem_max = 4194304 
+	net.core.wmem_default = 262144 
+	net.core.wmem_max = 1048576
+
+##拷贝oracle到/tmp/oracle
+
+拷贝oracle到/tmp/oracle
+
+	su -
+	cd /tmp/oracle
+	unzip 1.zip 
+	unzip 2.zip
+
+执行./runInstaller
+
+安装
+
+dbca#安装实例
+netca#配置端口
+
+
