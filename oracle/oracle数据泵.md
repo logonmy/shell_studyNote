@@ -17,7 +17,7 @@
 1. 按用户导出
   expdp pm4332test/pm4332test@orcl schemas=pm4332test DIRECTORY=yue_dumpdp dumpfile=pm4332test.dmp logfile=pm4332_dmpdp.log;
 
-2. impdp pm4332test/pm4332test@orcl schemas=pm4332test DIRECTORY=yue_dumpdp1 DUMPFILE=pm4332test.dmp logfile=pm4332_dmpdp.log;
+2. impdp pm4332test/pm4332test@orcl remap_schema=pm4332test:pm4332dev DIRECTORY=yue_dumpdp1 DUMPFILE=pm4332test.dmp logfile=pm4332_dmpdp.log;
 
 
 ##导出错误
