@@ -1,0 +1,15 @@
+[TOC]
+
+#mysql常见问题报错
+
+##mysql报错 未验证
+有可能会出现下面
+的错误信息，导致mysql启动失败。
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+解决方法（切记，操作前，一定备份mysql数据库）：
+rm -fr /var/lib/mysql/*      #删除目录
+rm /var/lock/subsys/mysqld   #删除目录
+killall mysqld   #结束mysql进程
+service mysqld start  #启动mysql
+/etc/rc.d/init.d/mysqld status   #查看mysql状态
+mysql_secure_installation  #重置Mysql数据库密码
