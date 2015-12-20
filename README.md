@@ -4,4 +4,4 @@
 * [b](test/test.md)
 * [c](test/test.md)
 
-image index 1
+image index 3

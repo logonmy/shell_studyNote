@@ -16,4 +16,4 @@ git config --global user.email "pcjk8866@gmail.com"
 
 - 如果客户端无法登陆，先将ssh-key上传到github上
 
-![ssh-key](../_img/ssh-key.png "ssh-key")
+![ssh-key](_img/3.png "ssh-key")
