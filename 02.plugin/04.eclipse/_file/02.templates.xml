@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="重写process标准写法" enabled="true" name="inca_process">public static final String CMD = "";&#13;
+	private Category  logger =  Category.getInstance(Bms_stwarn_createadjusttmp_dbprocess.class);&#13;
+	@Override&#13;
+	public int process(Userruninfo userinfo, ClientRequest req,&#13;
+			ServerResponse resp) throws Exception {&#13;
+		String cmd = req.getCommand();&#13;
+		if (!CMD.equals(cmd)) {&#13;
+			throw new Exception("服务器命令错误！");&#13;
+		}&#13;
+		Connection con = null;&#13;
+		&#13;
+		try{&#13;
+			con = super.getConnection();&#13;
+&#13;
+			con.commit();&#13;
+		}catch(Exception e){&#13;
+			super.rollback(con);&#13;
+			logger.error("error", e);&#13;
+			throw e;&#13;
+		}finally{&#13;
+			super.close(con);&#13;
+		}&#13;
+		return super.process(userinfo, req, resp);&#13;
+	}</template></templates>
