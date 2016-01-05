@@ -21,8 +21,8 @@
 
 配置java 和 hadoop 环境变量
 
-	JAVA_HOME=/home/hadoop/app/jdk1.7
-	HADOOP_HOME=/home/hadoop/app/hadoop-2.6.2
+	JAVA_HOME=/opt/java/jdk1.7
+	HADOOP_HOME=/home/hadoop180/app/hadoop-2.6.2
 	PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin
 	CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 	export JAVA_HOME PATH CLASSPATH HADOOP_HOME
