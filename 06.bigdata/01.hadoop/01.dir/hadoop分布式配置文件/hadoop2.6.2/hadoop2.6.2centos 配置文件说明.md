@@ -152,7 +152,9 @@ export JAVA_HOME=/home/hadoop/app/jdk1.7.0_51(可以不修改，只要配置${JA
 			
 
 			
-#6修改slaves(slaves是指定子节点的位置，因为要在hadoop1上启动HDFS、在hadoop3启动yarn，所以hadoop1上的slaves文件指定的是datanode的位置，hadoop3上的slaves文件指定的是nodemanager的位置)
+#6修改slaves
+(slaves是指定子节点的位置，因为要在hadoop1上启动HDFS、在hadoop3启动yarn，所以hadoop1上的slaves文件指定的是datanode的位置，hadoop3上的slaves文件指定的是nodemanager的位置)  
+
 	hadoop5
 	hadoop6
 	hadoop7
@@ -163,22 +165,22 @@ export JAVA_HOME=/home/hadoop/app/jdk1.7.0_51(可以不修改，只要配置${JA
 在hadoop1上生产一对钥匙  
 	ssh-keygen -t rsa
 将公钥拷贝到其他节点，包括自己  
-	ssh-coyp-id hadoop1
-	ssh-coyp-id hadoop2
-	ssh-coyp-id hadoop3
-	ssh-coyp-id hadoop4
-	ssh-coyp-id hadoop5
-	ssh-coyp-id hadoop6
-	ssh-coyp-id hadoop7
+	ssh-copy-id hadoop1
+	ssh-copy-id hadoop2
+	ssh-copy-id hadoop3
+	ssh-copy-id hadoop4
+	ssh-copy-id hadoop5
+	ssh-copy-id hadoop6
+	ssh-copy-id hadoop7
 配置hadoop3到hadoop4、hadoop5、hadoop6、hadoop7的免密码登陆  
 在hadoop3上生产一对钥匙  
 	ssh-keygen -t rsa
 将公钥拷贝到其他节点 
-	ssh-coyp-id hadoop4
-	ssh-coyp-id hadoop5
-	ssh-coyp-id hadoop6
-	ssh-coyp-id hadoop7
+	ssh-copy-id hadoop4
+	ssh-copy-id hadoop5
+	ssh-copy-id hadoop6
+	ssh-copy-id hadoop7
 注意：两个namenode之间要配置ssh免密码登陆，别忘了配置hadoop2到hadoop1的免登陆  
 在hadoop2上生产一对钥匙  
 	ssh-keygen -t rsa
-	ssh-coyp-id -i hadoop1	
+	ssh-copy-id -i hadoop1	
