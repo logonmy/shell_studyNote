@@ -1,0 +1,65 @@
+[TOC]
+
+#常用编程代码总结  
+
+##读取配置文件  
+
+1. 使用eval方法解析  
+	
+	eval `cat ./init.cfg`
+	或
+	while read line;do  
+	    eval "$line"  
+	done < config  
+	echo $ID  
+	echo $IP  
+	echo $Name  
+
+2.  直接将变量load进环境中成为环境变量
+
+	source ./init.cfg
+
+## 通过shell脚本替换属性文件中的某行记录
+
+demo.properties
+
+	user.name=test
+	user.password=123456
+
+方法
+
+	sed -i "s#^user.name=.*#user.name=用户名#g"  path/demo.properties
+	sed -i "s#^user.password=.*#user.password=密码#g"  path/demo.properties
+
+##某行记录是否存在
+
+grep -Fq "SHELL=/bin/bash" /etc/crontab;echo $?  
+0 是命令执行成功
+1-255 失败
+
+##判断用户是否存在
+	f id -u $1 >/dev/null; then
+	        echo "user exists"
+	else
+	        echo "user does not exist"
+	fi
+
+##字符串截取
+	${parameter%word} 最小限度从后面截取word
+	${parameter%%word} 最大限度从后面截取word
+	${parameter#word} 最小限度从前面截取word
+	${parameter##word} 最大限度从前面截取word
+
+##ssh 免密码登录脚本  
+yum -y install expect  expect需要先安装
+
+	auto_ssh_copy_id () {
+	    expect -c "set timeout -1;
+	                spawn ssh-copy-id $2;
+	                expect {
+	                    *(yes/no)* {send -- yes\r;exp_continue;}
+	                    *assword:* {send -- $1\r;exp_continue;}
+	                    eof        {exit 0;}
+	                }";
+	}
+
