@@ -63,3 +63,8 @@ yum -y install expect  expect需要先安装
 	                }";
 	}
 
+##shell脚本引用
+
+	#!/bin/bash
+
+##shell退出
