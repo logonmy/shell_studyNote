@@ -3,3 +3,5 @@
 #apache server安装
 ## 检查是否存在httpd
 rpm -qa | grep httpd
+rpm -e --nodeps httpd*
+##
