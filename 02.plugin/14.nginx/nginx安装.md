@@ -14,7 +14,7 @@ wget http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-1.8.1-1.el6.ngx.x86_64
 
 	whereis nginx
 	nginx -v
-
+	rpm -ql nginx #查询nginx的文件路径
 ##nginx配置
 
 	vim /etc/nginx/nginx.conf
