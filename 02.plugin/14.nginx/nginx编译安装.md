@@ -85,7 +85,8 @@ ngninx不能实现吗？
 	mvdir=$base_path/$logname/$month
 	mkdir -p ${mvdir}
 	mv $base_path/${logname}.access.log ${mvdir}/${logname}.access.log.${hour}
-	kill -USR1 `cat ${base_path}/nginx.pid`
+	#kill -USR1 `cat ${base_path}/nginx.pid`
+	/usr/sbin/nginx -s reopen
 
 	定时任务
 	Crontab 编辑定时任务
