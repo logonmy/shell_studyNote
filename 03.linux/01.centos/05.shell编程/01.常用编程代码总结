@@ -2,6 +2,15 @@
 
 #常用编程代码总结  
 
+##判断hdfs目录是否存在
+yesterday=$(date -d '-1 day' '+%Y-%m-%d')
+hadoop fs -test -e /user/hive/warehouse/yhd_gmv_month/ds=$yesterday
+if [ $? -eq 0 ] ;then
+  echo 'exist'
+else
+  echo 'Error! Directory is not exist'
+fi
+
 ##读取配置文件  
 
 1. 使用eval方法解析  
@@ -68,3 +77,11 @@ yum -y install expect  expect需要先安装
 	#!/bin/bash
 
 ##shell退出
+
+##判断参数是否为空
+if [ ! -n "$1" ]
+then
+ echo "empty"
+else
+ echo "not null"
+fi
