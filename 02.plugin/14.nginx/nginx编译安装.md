@@ -48,6 +48,19 @@ pcre:支持地址重写rewrite功能
 
 	make && make install
 
+##配置
+
+	server {
+		listen 8888;
+		server_name localhost;
+		charset utf-8;
+		access_log  logs/express.access.log  main;
+		location / {
+			root   html/express;
+			index  index.html index.htm;
+		}
+	}
+
 ##问题
 ###没有make
 yum -y install gcc automake autoconf libtool make
