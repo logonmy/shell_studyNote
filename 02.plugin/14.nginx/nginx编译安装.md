@@ -43,6 +43,7 @@ pcre:支持地址重写rewrite功能
 	--prefix=/data/nginx \
 	--sbin-path=/usr/sbin/nginx \
 	--conf-path=/etc/nginx/nginx.conf \
+	--with-http_ssl_module \
 	--user=nginx \
 	--group=nginx \
 
@@ -60,7 +61,9 @@ pcre:支持地址重写rewrite功能
 			index  index.html index.htm;
 		}
 	}
-
+##开机启动
+/usr/sbin/nginx
+su cloudera -lc "/data/tomcat/startorshutdown/startup-8888.sh"
 ##问题
 ###没有make
 yum -y install gcc automake autoconf libtool make
