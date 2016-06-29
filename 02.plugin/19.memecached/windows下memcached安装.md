@@ -81,3 +81,19 @@ telnet 127.0.0.1 11211
 			c.shutdown();
 		}
 	}
+
+
+##windows设置服务
+
+	sc create "memcached9991" start= auto binPath= "E:\software\memcached\memcached.exe -p 9991 -l 127.0.0.1 -m 2048 -d runservice " DisplayName= "memcached9991"
+	sc create "memcached9992" start= auto binPath= "E:\software\memcached\memcached.exe -p 9992 -l 127.0.0.1 -m 2048 -d runservice " DisplayName= "memcached9992"
+		​
+	sc create svnserver3690 start= auto binpath= "E:\software\lSVNServer\bin\svnserve.exe --service -r E:\Repositories" displayname= "svnserver3690" depend= Tcpip 
+
+	sc create "redis9980" start= auto binPath= "e:\software\redis\redis-server.exe --service-run e:\software\redis\redis.windows.9980.conf" DisplayName= "redis9980"
+	sc create "redis9981" start= auto binPath= "e:\software\redis\redis-server.exe --service-run e:\software\redis\redis.windows.9981.conf" DisplayName= "redis9981"
+
+	sc start "Memcached Server1" //启动
+	sc stop "Memcached Server1" //停止
+	sc delete "Memcached Server1" //卸载该服务
+
