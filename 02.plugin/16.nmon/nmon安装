@@ -1,0 +1,9 @@
+[TOC]
+
+#nmon安装
+##下载
+http://nmon.sourceforge.net/pmwiki.php?n=Site.Download
+wget http://jaist.dl.sourceforge.net/project/nmon/nmon16e_mpginc.tar.gz
+
+ mkdir /usr/local/nmon16
+tar zxvf nmon16e_mpginc.tar.gz -C ../nmon16
