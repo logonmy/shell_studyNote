@@ -11,6 +11,7 @@ init_connect='SET NAMES utf8'
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 innodb_file_per_table=1
+wait_timeout=30
 [mysqld_safe]
 log-error=/usr/local/mysql/logs/mysqld.log
 pid-file=/usr/local/mysql/mysqld.pid
