@@ -6,10 +6,10 @@
 首先，进入你想创建证书和私钥的目录，例如：
 
 $ cd /usr/local/nginx/conf
-创建服务器私钥，命令会让你输入一个口令：
+创建服务器私钥，命令会让你输入一个口令：Lenovo123
 
 $ openssl genrsa -des3 -out server.key 1024
-创建签名请求的证书（CSR）：
+创建签名请求的证书（CSR）：Lenovo456
 
 $ openssl req -new -key server.key -out server.csr
 在加载SSL支持的Nginx并使用上述私钥时除去必须的口令：
