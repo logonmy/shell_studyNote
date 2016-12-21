@@ -19,3 +19,8 @@ git config --global user.email "pcjk8866@gmail.com"
 ![ssh-key](_img/3.png "ssh-key")
 
 ##git window 下建立仓库
+
+
+## git切换远程server
+git remote add origin https://git.oschina.net/pcjk8866/VideoParseAndPerformancePlatform.git
+git pull origin master
